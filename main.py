@@ -18,8 +18,7 @@ model_dir = "ml_prj/models"
 # model evaluator
 evaluator = BinaryClassificationEvaluator() \
         .setMetricName("areaUnderROC") \
-        .setLabelCol("label") \
-        .setPredictionCol("prediction")
+        .setLabelCol("label")
 
 # read data from hdfs
 x_train = spark\
@@ -47,5 +46,5 @@ target = ["label"]
 train_data = prepare_data(x_train, y_train, features, target)
 train_data.show(3)
 
-model = train_and_predict(x_train, y_train, features, target)
+model = train_and_predict(x_train, y_train, features, target, evaluator)
 model.write().overwrite().save(model_dir)

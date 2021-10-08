@@ -25,7 +25,7 @@ def prepare_data(x_train, y_train, features, target):
     return train_data
 
 
-def train_and_predict(x_train, y_train, features, target):
+def train_and_predict(x_train, y_train, features, target, evaluator):
     train_data = prepare_data(x_train, y_train, features, target)
     lr = LogisticRegression(maxIter=10, regParam=0.01)
     # train model
